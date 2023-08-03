@@ -1,7 +1,7 @@
 [project]
-name = "PROJECT_NAME"
+name = "hostfinder"
 version = "0.0.1"
-description = "PROJECT_DESCRIPTION"
+description = "Find host in local subnet listening to specified port"
 authors = [{ name = "Quinten Roets", email = "qdr2104@columbia.edu" }]
 license = { text = "MIT" }
 readme = "README.md"
@@ -9,7 +9,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.urls]
-"Source Code" = "https://github.com/quintenroets/PROJECT_NAME"
+"Source Code" = "https://github.com/quintenroets/hostfinder"
 
 [project.optional-dependencies]
 dev = [
@@ -21,7 +21,7 @@ test = [
 ]
 
 [project.scripts]
-CONSOLE_COMMAND = "PROJECT_NAME:main"
+CONSOLE_COMMAND = "hostfinder:main"
 
 [build-system]
 requires = ["setuptools"]
