@@ -1,7 +1,7 @@
 fail_fast: true
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.0.278
+    rev: v0.0.282
     hooks:
       - id: ruff
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -9,12 +9,12 @@ repos:
     hooks:
       - id: end-of-file-fixer
   - repo: https://github.com/myint/docformatter
-    rev: v1.5.1
+    rev: v1.7.5
     hooks:
       - id: docformatter
         args: [--in-place, --pre-summary-newline, --close-quotes-on-newline]
   - repo: https://github.com/hadialqattan/pycln
-    rev: v2.1.3
+    rev: v2.2.0
     hooks:
       - id: pycln
         args: [-q, --all, --exclude, __init__.py]
@@ -24,7 +24,7 @@ repos:
       - id: isort
         args: [--profile, black]
   - repo: https://github.com/psf/black
-    rev: 23.1.0
+    rev: 23.7.0
     hooks:
       - id: black
   - repo: local
