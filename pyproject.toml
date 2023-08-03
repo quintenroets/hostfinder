@@ -21,7 +21,7 @@ test = [
 ]
 
 [project.scripts]
-CONSOLE_COMMAND = "hostfinder:main"
+hostfinder = "hostfinder:main"
 
 [build-system]
 requires = ["setuptools"]
