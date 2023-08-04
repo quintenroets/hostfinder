@@ -9,7 +9,7 @@ import psutil
 @dataclass
 class HostFinder:
     port: int = 22
-    loopback_address: str = "127.0.0.1"
+    loopback_name: str = "lo"
     timeout: int = 10
 
     def __post_init__(self):
@@ -26,19 +26,19 @@ class HostFinder:
                 if result is not None:
                     yield result
 
-    def local_subnet_addresses(self):
+    def local_subnets(self):
         local_interfaces = psutil.net_if_addrs()
-        for subnets in local_interfaces.values():
-            for subnet in subnets:
-                is_valid = (
-                    subnet.family == socket.AF_INET
-                    and subnet.address != self.loopback_address
-                )
-                if is_valid:
-                    network_string = f"{subnet.address}/{subnet.netmask}"
-                    network = ipaddress.IPv4Network(network_string, strict=False)
-                    for address in network.hosts():
-                        yield str(address)
+        for interface_name, subnets in local_interfaces.items():
+            if interface_name != self.loopback_name:
+                yield from subnets
+
+    def local_subnet_addresses(self):
+        for subnet in self.local_subnets():
+            if subnet.family == socket.AF_INET:
+                network_string = f"{subnet.address}/{subnet.netmask}"
+                network = ipaddress.IPv4Network(network_string, strict=False)
+                for address in network.hosts():
+                    yield str(address)
 
     def is_listening(self, address: str):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
