@@ -4,7 +4,7 @@ from . import hostfinder
 
 
 def main():
-    description = "Find host in local subnet listening to specified port"
+    description = "Find host in local subnet listening on specified port"
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(
         "--port",
