@@ -1,6 +1,6 @@
 # Host finder
 
-Find host in local subnet listening to specified port
+Find host in local subnet listening on specified port
 
 ## Installation
 
