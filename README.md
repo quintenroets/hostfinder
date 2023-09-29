@@ -1,3 +1,4 @@
+[![PyPI version](https://badge.fury.io/py/hostfinder.svg)](https://badge.fury.io/py/hostfinder)
 # Host finder
 
 Find host in local subnet listening on specified port

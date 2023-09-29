@@ -1,5 +1,10 @@
 fail_fast: true
 repos:
+  - repo: https://github.com/myint/docformatter
+    rev: v1.7.5
+    hooks:
+      - id: docformatter
+        args: [--in-place, --pre-summary-newline, --close-quotes-on-newline]
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.0.282
     hooks:
@@ -8,21 +13,6 @@ repos:
     rev: v4.4.0
     hooks:
       - id: end-of-file-fixer
-  - repo: https://github.com/myint/docformatter
-    rev: v1.7.5
-    hooks:
-      - id: docformatter
-        args: [--in-place, --pre-summary-newline, --close-quotes-on-newline]
-  - repo: https://github.com/hadialqattan/pycln
-    rev: v2.2.0
-    hooks:
-      - id: pycln
-        args: [-q, --all, --exclude, __init__.py]
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-        args: [--profile, black]
   - repo: https://github.com/psf/black
     rev: 23.7.0
     hooks:
@@ -37,9 +27,9 @@ repos:
         always_run: true
   - repo: local
     hooks:
-      - id: check-version
-        name: check-version
-        entry: sh -c "git diff --staged pyproject.toml | grep version"
+      - id: bump-version
+        name: bump-version
+        entry: sh -c "git diff --staged pyproject.toml | grep version || bump2version --config-file .bumpversion.cfg patch"
         language: system
         pass_filenames: false
         always_run: true
