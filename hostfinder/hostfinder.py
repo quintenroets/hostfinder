@@ -11,6 +11,7 @@ class HostFinder:
     port: int = 22
     loopback_name: str = "lo"
     timeout: int = 10
+    max_workers: int = 1000
 
     def __post_init__(self):
         socket.setdefaulttimeout(self.timeout)
@@ -18,8 +19,7 @@ class HostFinder:
     def generate_hosts(self):
         possible_hosts = self.local_subnet_addresses()
         possible_hosts = list(possible_hosts)
-        num_possible_hosts = len(possible_hosts)
-        executor = concurrent.futures.ThreadPoolExecutor(max_workers=num_possible_hosts)
+        executor = concurrent.futures.ThreadPoolExecutor(max_workers=self.max_workers)
         with executor:
             results = executor.map(self.is_listening, possible_hosts)
             for result in results:
@@ -36,9 +36,10 @@ class HostFinder:
         for subnet in self.local_subnets():
             if subnet.family == socket.AF_INET:
                 network_string = f"{subnet.address}/{subnet.netmask}"
-                network = ipaddress.IPv4Network(network_string, strict=False)
-                for address in network.hosts():
-                    yield str(address)
+                if subnet.netmask.count("0") == 1:
+                    network = ipaddress.IPv4Network(network_string, strict=False)
+                    for address in network.hosts():
+                        yield str(address)
 
     def is_listening(self, address: str):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
