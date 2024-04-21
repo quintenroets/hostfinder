@@ -17,12 +17,15 @@ Find hosts listening on specified port in local network
 
     ```python
     import hostfinder
+    from hostfinder import Options
+
+    options = Options(port=8080)
 
     # first host listening on a port
-    host = hostfinder.find_host(port=8080)
+    host = hostfinder.find_host(options)
 
     # all hosts listening on a port
-    hosts = hostfinder.find_hosts(port=8080)
+    hosts = hostfinder.find_hosts(options)
     ```
 
 ## Installation
