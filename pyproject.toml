@@ -1,6 +1,6 @@
 [project]
 name = "hostfinder"
-version = "1.0.0"
+version = "1.0.1"
 description = "Find hosts listening on specified port in local network"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
 license = {text = "MIT"}
