@@ -1,7 +1,13 @@
-from package_utils.context.entry_point import create_entry_point
+from package_utils.cli import create_entry_point
 
-from hostfinder import main
+from hostfinder import Options
+from hostfinder.main.hostfinder import HostFinder
 
-from ..context import context
 
-entry_point = create_entry_point(main, context)
+def find_hosts(options: Options) -> None:
+    hosts = HostFinder(options).find_hosts()
+    output = "\n".join(hosts)
+    print(output)
+
+
+entry_point = create_entry_point(find_hosts)

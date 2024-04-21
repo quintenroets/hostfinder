@@ -1,11 +1,13 @@
-from ..context import context
+from ..models import Options
+from .hostfinder import HostFinder
 
 
-def main() -> None:
-    """
-    Python package template.
-    """
-    message = "main functionality"
-    if context.options.debug:
-        print(message)
-    print(context.secrets)
+def find_hosts(options: Options) -> list[str]:
+    hosts = HostFinder(options).find_hosts()
+    return list(hosts)
+
+
+def find_host(options: Options) -> str | None:
+    options.show_progress = False
+    hosts = HostFinder(options).find_hosts()
+    return next(hosts, None)
