@@ -11,7 +11,7 @@ jobs:
       - name: Check pre-commit hooks
         uses: quintenroets/actions/validate/pre-commit@main
         env:
-          SKIP: "check-coverage, check-shields"
+          SKIP: "check-coverage"
 
   verify-packaging:
     name: Verify packaging
