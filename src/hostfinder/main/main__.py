@@ -3,7 +3,7 @@ import argparse
 from . import hostfinder
 
 
-def main():
+def main() -> None:
     description = "Find host in local subnet listening on specified port"
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(

@@ -1,5 +1,4 @@
 from .hostfinder import HostFinder
-from .main import main
 
 
 def find_hosts(**kwargs):

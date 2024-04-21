@@ -13,7 +13,7 @@ class HostFinder:
     timeout: int = 10
     max_workers: int = 1000
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         socket.setdefaulttimeout(self.timeout)
 
     def generate_hosts(self):
