@@ -1,21 +1,19 @@
 [project]
 name = "hostfinder"
-version = "1.0.1"
-description = "Find hosts listening on specified port in local network"
+version = "0.1.0"
+description = "Template for Python package published on PyPI"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "psutil >=5.9.8, <6",
+    "package-utils[context] >=0.6.1, <1",
 ]
 
 [project.optional-dependencies]
 dev = [
-    "hypothesis >= 6.100.0, <7",
     "package-dev-tools >=0.5.11, <1",
-    "package-dev-utils >=0.1.6, <2",
-    "types-psutil >=5.9.5.20240316, <6",
+    "package-dev-utils >=0.1.6, <1",
 ]
 
 [project.urls]
@@ -29,7 +27,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [tool.coverage.run]
-command_line = "-m pytest"
+command_line = "-m pytest tests"
 
 [tool.coverage.report]
 precision = 4
