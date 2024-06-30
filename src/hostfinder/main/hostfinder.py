@@ -8,7 +8,7 @@ from typing import cast
 import cli
 import psutil
 
-from ..models import Address, Options
+from hostfinder.models import Address, Options
 
 
 @dataclass
@@ -28,7 +28,9 @@ class HostFinder:
             yield from self.extract_listening_addresses(results, number_of_checks)
 
     def extract_listening_addresses(
-        self, results: Iterable[str | None], number_of_checks: int
+        self,
+        results: Iterable[str | None],
+        number_of_checks: int,
     ) -> Iterator[str]:
         if self.options.show_progress:
             results = cli.track_progress(
