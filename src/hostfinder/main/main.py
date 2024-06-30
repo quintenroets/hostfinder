@@ -1,4 +1,5 @@
-from ..models import Options
+from hostfinder.models import Options
+
 from .hostfinder import HostFinder
 
 

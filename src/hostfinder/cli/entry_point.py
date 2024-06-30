@@ -7,7 +7,7 @@ from hostfinder.main.hostfinder import HostFinder
 def find_hosts(options: Options) -> None:
     hosts = HostFinder(options).find_hosts()
     output = "\n".join(hosts)
-    print(output)
+    print(output)  # noqa: T201
 
 
 entry_point = create_entry_point(find_hosts)
