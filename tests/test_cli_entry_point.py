@@ -1,5 +1,6 @@
-from hostfinder import cli
 from package_dev_utils.tests.args import no_cli_args
+
+from hostfinder import cli
 
 
 @no_cli_args
