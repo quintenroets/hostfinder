@@ -7,7 +7,7 @@ license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "psutil >=5.9.8, <7",
+    "psutil >=5.9.8, <8",
 ]
 
 [project.optional-dependencies]
