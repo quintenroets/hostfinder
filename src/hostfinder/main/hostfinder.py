@@ -1,12 +1,12 @@
-import concurrent.futures
 import ipaddress
 import socket
-from collections.abc import Iterable, Iterator
+from collections.abc import Callable, Iterator
 from dataclasses import dataclass, field
 from typing import cast
 
 import cli
 import psutil
+from package_utils.jobs import run_jobs
 
 from hostfinder.models import Address, Options
 
@@ -20,28 +20,19 @@ class HostFinder:
         socket.setdefaulttimeout(self.options.timeout)
 
     def find_hosts(self) -> Iterator[str]:
-        possible_hosts = list(self.generate_host_addresses())
-        executor = concurrent.futures.ThreadPoolExecutor(self.options.max_workers)
-        number_of_checks = len(possible_hosts)
-        with executor:
-            results = executor.map(self.extract_listening_address, possible_hosts)
-            yield from self.extract_listening_addresses(results, number_of_checks)
+        def create_job(host: str) -> Callable[[], str | None]:
+            return lambda: self.extract_listening_address(host)
 
-    def extract_listening_addresses(
-        self,
-        results: Iterable[str | None],
-        number_of_checks: int,
-    ) -> Iterator[str]:
+        jobs = [create_job(host) for host in self.generate_host_addresses()]
+        results = run_jobs(jobs, number_of_workers=self.options.max_workers)
         if self.options.show_progress:
             results = cli.track_progress(
                 results,
-                total=number_of_checks,
+                total=len(jobs),
                 description="Checking",
                 unit="addresses",
             )
-        for result in results:
-            if result is not None:
-                yield result
+        return (result for result in results if result is not None)
 
     def generate_subnets(self) -> Iterator[Address]:
         interfaces = psutil.net_if_addrs()
