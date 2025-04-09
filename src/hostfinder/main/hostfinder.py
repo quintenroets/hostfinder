@@ -38,7 +38,7 @@ class HostFinder:
         interfaces = psutil.net_if_addrs()
         for name, subnets in interfaces.items():
             if name != self.loopback_name:
-                yield from cast(Iterator[Address], subnets)
+                yield from cast("Iterator[Address]", subnets)
 
     def generate_host_addresses(self) -> Iterator[str]:
         for subnet in self.generate_subnets():
