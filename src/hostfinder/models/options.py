@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from dataclasses import dataclass
 from typing import Annotated
 
@@ -14,5 +13,3 @@ class Options:
     timeout: int = 10
     max_workers: int = 100
     show_progress: bool = True
-=======
->>>>>>> template
