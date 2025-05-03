@@ -13,10 +13,15 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+<<<<<<< HEAD
     "hypothesis >= 6.100.0, <7",
     "package-dev-tools >=0.5.11, <1",
     "package-dev-utils >=0.1.6, <2",
     "types-psutil >=5.9.5.20240316, <8",
+=======
+    "package-dev-tools >=0.7.0, <1",
+    "package-dev-utils >=0.1.6, <1",
+>>>>>>> template
 ]
 
 [project.urls]
