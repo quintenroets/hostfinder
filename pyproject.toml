@@ -3,7 +3,7 @@ name = "hostfinder"
 version = "1.0.2"
 description = "Find hosts listening on specified port in local network"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
-license = {text = "MIT"}
+license = "MIT"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
