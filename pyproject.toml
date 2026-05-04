@@ -7,16 +7,26 @@ license = "MIT"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+<<<<<<< HEAD
     "package-utils >=0.8.0, <1",
     "psutil >=5.9.8, <8",
+=======
+    "package-utils[context] >=0.8.3, <1",
+    "powercli >=0.4.0, <1",
+>>>>>>> template
 ]
 
 [project.optional-dependencies]
 dev = [
+<<<<<<< HEAD
     "hypothesis >= 6.100.0, <7",
     "package-dev-tools >=0.8.0, <1",
     "package-dev-utils >=0.1.6, <2",
     "types-psutil >=5.9.5.20240316, <8",
+=======
+    "package-dev-tools >=0.8.1, <1",
+    "package-dev-utils >=0.1.6, <1",
+>>>>>>> template
 ]
 
 [project.urls]
