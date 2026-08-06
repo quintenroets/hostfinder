@@ -5,7 +5,7 @@ description = "Find hosts listening on specified port in local network"
 authors = [{name = "Quinten Roets", email = "qdr2104@columbia.edu"}]
 license = "MIT"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "package-utils >=0.8.3, <1",
     "psutil >=5.9.8, <8",
