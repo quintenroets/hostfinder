@@ -58,10 +58,13 @@ ignore = [
     "ANN401",   # annotated with Any
     "CPY001",   # missing copyright notice
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> template
     "D",        # docstrings
 =======
     "G004",     # logging f-string
+>>>>>>> template
+=======
 >>>>>>> template
     "D1",       # missing docstrings
     "D200",     # one-line docstring
@@ -70,7 +73,10 @@ ignore = [
     "D212",     # conflicts with D213
     "D401",     # imperative first line
     "G004",     # logging f-string
+<<<<<<< HEAD
     "S101", # assert used
+=======
+>>>>>>> template
 ]
 
 [tool.ruff.lint.per-file-ignores]
